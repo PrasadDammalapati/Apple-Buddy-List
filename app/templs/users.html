@@ -1,0 +1,114 @@
+﻿<h2>Buddies List</h2>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+<div class="container">
+    <div class="col-md-5">
+        <div class="row">
+            <input type="button" id="btnNewBuddy" value="Add New Buddy" ng-click="NewBuddy()" />
+            <modal-dialog show='myPopup.modalShown' width='500px' dialog-title='Add New Buddy' on-close='logClose()'>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <form id="myform"  ng-submit="SaveData(pars)">
+                <table class="table table-bordered table-hover">
+                    <tr>
+                        <td>Id
+                        </td>
+                        <td>
+                            <input type="text" ng-model="pars.id" id="txtid" placeholder="id" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>First Name
+                        </td>
+                        <td>
+                            <input type="text" class="form-controll" id="txtfName" ng-model="pars.fname" placeholder="First Name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Last Name
+                        </td>
+                        <td>
+                            <input type="text" id="txtlName" ng-model="pars.lname" placeholder="Last Name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>User Name
+                        </td>
+                        <td>
+                            <input type="text" id="txtUserName" ng-model="pars.uname" placeholder="User Name" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Email
+                        </td>
+                        <td>
+                            <input type="text" id="txtEmail" ng-model="pars.email" placeholder="Email" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DOB
+                        </td>
+                        <td>
+                            <input type="text" id="txtdob" ng-model="pars.dob" placeholder="Date Of Birth" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bio
+                        </td>
+                        <td>
+                            <input type="text" id="txtbio" ng-model="pars.bio" placeholder="Bio Data" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Save Buddy" />
+                        </td>
+                    </tr>
+                </table>
+                    </form>
+            </div>
+        </div>
+    </div>
+            </modal-dialog>
+        </div>
+        <div class="row">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <td>
+                        <input type="text" name="id" ng-model="namesearch" id="txtsearch" required placeholder="search by Id or Name" />
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <br />
+        <div class="row">
+            <table class="table table-bordered table-hover" ng-init="init()">
+                <thead>
+                    <tr>
+                        <td>Id
+                        </td>
+                        <td>Name
+                        </td>
+                        <td>Delete
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="user in AllUsers | filter:namesearch">
+                        <td>{{user.id}}
+                        </td>
+                        <td><a>
+                            <edit-in-place value="user.FirstName"></edit-in-place>
+                        </a>
+                        </td>
+                        <td>
+                            <button type="button" class="close pull-right" aria-hidden="true" ng-click="deleteUser(user)">&times;</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
